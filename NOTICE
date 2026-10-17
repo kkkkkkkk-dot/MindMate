@@ -1,0 +1,15 @@
+MindBridge
+
+This repository is a derivative work based on the MindBridge open-source
+project and contains modifications made for this distribution.
+
+The upstream source repository, version, copyright notice, and license text
+were not included in the delivered project package. The MIT License in this
+repository applies to the original modifications and additions made in this
+repository. Upstream code, documentation, images, datasets, and model-derived
+assets remain subject to the rights and license terms of their respective
+authors.
+
+Before public deployment or redistribution, verify the upstream project's
+license and retain all required attribution and notice files. The local model
+is derived from Qwen2.5-7B-Instruct; refer to the upstream model license.

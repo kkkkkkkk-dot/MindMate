@@ -1,0 +1,93 @@
+services:
+  app:
+    build: .
+    image: mindbridge-agent:0.1.0
+    container_name: mindbridge-agent
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      chroma:
+        condition: service_started
+    environment:
+      SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: mysql
+      DB_URL: "jdbc:mysql://mysql:3306/mindbridge?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai"
+      DB_USERNAME: ${DB_USERNAME:-mindbridge}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      MIND_BRIDGE_ADMIN_USERNAME: ${MIND_BRIDGE_ADMIN_USERNAME:-admin}
+      MIND_BRIDGE_ADMIN_PASSWORD: ${MIND_BRIDGE_ADMIN_PASSWORD:?MIND_BRIDGE_ADMIN_PASSWORD is required}
+      MIND_BRIDGE_STUDENT_USERNAME: ${MIND_BRIDGE_STUDENT_USERNAME:-student}
+      MIND_BRIDGE_STUDENT_PASSWORD: ${MIND_BRIDGE_STUDENT_PASSWORD:-}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      AI_PROVIDER: ${AI_PROVIDER:-ollama}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-mindbridge-qwen2.5-7b-ft:latest}
+      USE_CHROMA: ${USE_CHROMA:-true}
+      CHROMA_BASE_URL: http://chroma:8000
+      MCP_SERVER_ENABLED: ${MCP_SERVER_ENABLED:-true}
+      MCP_EMAIL_MODE: ${MCP_EMAIL_MODE:-log}
+      MAIL_HOST: ${MAIL_HOST:-mailpit}
+      MAIL_PORT: ${MAIL_PORT:-1025}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data:/app/data
+
+  mysql:
+    image: mysql:8.4
+    container_name: mindbridge-mysql
+    environment:
+      MYSQL_DATABASE: mindbridge
+      MYSQL_USER: ${DB_USERNAME:-mindbridge}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p$$MYSQL_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: mindbridge-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: mindbridge-chroma
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - chroma-data:/chroma/chroma
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mindbridge-mailpit
+    ports:
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
+
+volumes:
+  mysql-data:
+  redis-data:
+  chroma-data:

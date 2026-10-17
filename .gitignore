@@ -1,0 +1,42 @@
+target/
+.m2/
+.tools/
+.idea/
+.vscode/
+*.iml
+
+# Runtime data and local reports
+data/
+logs/
+*.log
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+application-local.yml
+application-secret.yml
+*.pem
+*.key
+*.p12
+*.jks
+
+# Build/release artifacts and model weights
+dist/
+backup/
+*.gguf
+*.bin
+*.safetensors
+*.zip
+*.tar
+*.tar.gz
+
+# Local data exports
+*.db
+*.mv.db
+*.trace.db
+*.xlsx
+*.xls
+*.jsonl
+
+.DS_Store
