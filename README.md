@@ -2,9 +2,6 @@
 
 MindMate 是一个校园心理健康智能体，支持动态路由 RAG、SSE 流式输出、后台风险识别、Excel/邮件预警和多 Agent 协作。
 
-> **来源声明**
->
-> 本项目原名为 MindBridge，现更名为 MindMate，本项目基于 MindBridge 开源代码二次开发并进行了安全加固与功能重构。原始交付包未包含上游仓库地址和 LICENSE 文件；本仓库对二次开发新增和修改的部分采用 MIT License，上游代码、文档、图片、数据集和模型衍生资产仍归原作者所有并受其原始许可约束。公开发布或再分发前，请自行确认上游授权并保留所有必需的版权和 NOTICE 信息。详见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。
 
 ## 主要能力
 
