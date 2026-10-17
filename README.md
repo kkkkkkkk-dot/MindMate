@@ -1,7 +1,6 @@
 # MindMate
 
-![MindMate Banner](docs/images/mindmate-banner.png)
-
+![MindMate Banner](docs/images/mindmate-banner(1).png)
 MindMate 是一个校园心理健康智能体，支持动态路由 RAG、SSE 流式输出、后台风险识别、Excel/邮件预警和多 Agent 协作。
 
 
