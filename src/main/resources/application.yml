@@ -3,15 +3,15 @@ server:
 
 spring:
   application:
-    name: mindbridge-agent
+    name: mindmate
   ai:
     mcp:
       server:
         enabled: ${MCP_SERVER_ENABLED:true}
-        name: mindbridge-mcp-server
+        name: mindmate-mcp-server
         version: 0.1.0
         type: SYNC
-        instructions: "MindBridge MCP server exposes psychological report archival and high-risk alert tools."
+        instructions: "MindMate MCP server exposes psychological report archival and high-risk alert tools."
         sse-endpoint: ${MCP_SERVER_SSE_ENDPOINT:/sse}
         sse-message-endpoint: ${MCP_SERVER_MESSAGE_ENDPOINT:/mcp/messages}
         capabilities:
@@ -22,13 +22,13 @@ spring:
       client:
         enabled: ${MCP_CLIENT_ENABLED:false}
         initialized: ${MCP_CLIENT_INITIALIZED:true}
-        name: mindbridge-mcp-client
+        name: mindmate-mcp-client
         version: 0.1.0
         type: SYNC
         request-timeout: ${MCP_CLIENT_REQUEST_TIMEOUT:20s}
         sse:
           connections:
-            mindbridge-tools:
+            mindmate-tools:
               url: ${MCP_SERVER_URL:http://localhost:${SERVER_PORT:8080}}
               sse-endpoint: ${MCP_SERVER_SSE_ENDPOINT:/sse}
   datasource:

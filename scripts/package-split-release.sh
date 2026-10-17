@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT_NAME="MindBridge"
+PROJECT_NAME="MindMate"
 MODEL_DIR_NAME="mindbridge-qwen2.5-7b-ft"
 MODEL_FILE_NAME="mindbridge-qwen2.5-7b-ft-q4_k_m.gguf"
 STAMP="$(date +%Y%m%d-%H%M%S)"
@@ -11,7 +11,7 @@ STAGE_DIR="$DIST_DIR/split-stage-$STAMP"
 APP_ARCHIVE="$DIST_DIR/${PROJECT_NAME}-app-$STAMP.tar.gz"
 MODEL_ARCHIVE="$DIST_DIR/${PROJECT_NAME}-model-$STAMP.tar.gz"
 
-MODEL_DIR="${MODEL_DIR:-$ROOT_DIR/dist/MindBridge-langding/models/$MODEL_DIR_NAME}"
+MODEL_DIR="${MODEL_DIR:-$ROOT_DIR/dist/MindMate-langding/models/$MODEL_DIR_NAME}"
 if [ ! -f "$MODEL_DIR/$MODEL_FILE_NAME" ]; then
   MODEL_DIR="$ROOT_DIR/models/$MODEL_DIR_NAME"
 fi

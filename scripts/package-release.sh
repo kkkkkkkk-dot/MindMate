@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT_NAME="MindBridge"
+PROJECT_NAME="MindMate"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 DIST_DIR="$ROOT_DIR/dist"
 STAGE_DIR="$DIST_DIR/stage-$STAMP"

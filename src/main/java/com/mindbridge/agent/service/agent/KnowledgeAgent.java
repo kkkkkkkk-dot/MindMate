@@ -67,7 +67,7 @@ public class KnowledgeAgent implements MindBridgeAgent {
         try {
             String query = aiClient.complete(List.of(
                     AiMessage.system("""
-                            你是 MindBridge 的 KnowledgeAgent。
+                            你是 MindMate 的 KnowledgeAgent。
                             你的任务是把学生输入改写成适合检索校园心理知识库的中文查询词。
                             只输出查询词本身，不要解释，不要超过 40 个字。
                             聚焦心理支持、校园求助流程、风险处理或情绪调节知识。
@@ -93,7 +93,7 @@ public class KnowledgeAgent implements MindBridgeAgent {
         try {
             String decision = aiClient.complete(List.of(
                     AiMessage.system("""
-                            你是 MindBridge 的 KnowledgeAgent。
+                            你是 MindMate 的 KnowledgeAgent。
                             判断检索结果是否足以支持后续心理关怀回答。
                             只输出 SUFFICIENT 或 INSUFFICIENT。
                             """),
@@ -115,7 +115,7 @@ public class KnowledgeAgent implements MindBridgeAgent {
         try {
             String query = aiClient.complete(List.of(
                     AiMessage.system("""
-                            你是 MindBridge 的 KnowledgeAgent。
+                            你是 MindMate 的 KnowledgeAgent。
                             上一次检索信息不足，请给出一个新的、更具体的中文检索 query。
                             只输出查询词本身，不要解释，不要超过 40 个字。
                             """),

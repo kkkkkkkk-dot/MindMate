@@ -50,7 +50,7 @@ public class CounselorAgent implements MindBridgeAgent {
         try {
             String plan = aiClient.complete(List.of(
                     AiMessage.system("""
-                            你是 MindBridge 的 CounselorAgent。
+                            你是 MindMate 的 CounselorAgent。
                             你负责心理支持式回应策略，不直接给诊断。
                             请结合记忆摘要、风险守护结果和知识库命中，制定 2-3 句回复策略。
                             高风险时必须优先保护学生安全。

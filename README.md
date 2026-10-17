@@ -1,10 +1,10 @@
-# MindBridge Agent
+# MindMate
 
-MindBridge 是一个校园心理健康智能体，支持动态路由 RAG、SSE 流式输出、后台风险识别、Excel/邮件预警和多 Agent 协作。
+MindMate 是一个校园心理健康智能体，支持动态路由 RAG、SSE 流式输出、后台风险识别、Excel/邮件预警和多 Agent 协作。
 
 > **来源声明**
 >
-> 本项目基于开源项目 **MindBridge** 二次开发。原始交付包未包含上游仓库地址和 LICENSE 文件；本仓库对二次开发新增和修改的部分采用 MIT License，上游代码、文档、图片、数据集和模型衍生资产仍归原作者所有并受其原始许可约束。公开发布或再分发前，请自行确认上游授权并保留所有必需的版权和 NOTICE 信息。详见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。
+> 本项目原名为 MindBridge，现更名为 MindMate，本项目基于 MindBridge 开源代码二次开发并进行了安全加固与功能重构。原始交付包未包含上游仓库地址和 LICENSE 文件；本仓库对二次开发新增和修改的部分采用 MIT License，上游代码、文档、图片、数据集和模型衍生资产仍归原作者所有并受其原始许可约束。公开发布或再分发前，请自行确认上游授权并保留所有必需的版权和 NOTICE 信息。详见 [LICENSE](LICENSE) 和 [NOTICE](NOTICE)。
 
 ## 主要能力
 
@@ -99,7 +99,7 @@ export MIND_BRIDGE_STUDENT_PASSWORD='请替换为强密码'
 ### 2. 本地运行
 
 ```bash
-cd MindBridge
+cd MindMate
 ./scripts/run-dev.sh
 ```
 
@@ -112,21 +112,21 @@ http://localhost:8080
 也可以手动启动：
 
 ```bash
-cd MindBridge
+cd MindMate
 mvn -Dmaven.repo.local=.m2/repository spring-boot:run
 ```
 
 打包后运行：
 
 ```bash
-cd MindBridge
+cd MindMate
 mvn -Dmaven.repo.local=.m2/repository package
 java -jar target/mindbridge-agent-0.1.0.jar --server.address=127.0.0.1 --server.port=8080
 ```
 ### 3. Docker 启动
 
 ```bash
-cd MindBridge
+cd MindMate
 cp .env.example .env
 # 编辑 .env，至少填写：
 # MIND_BRIDGE_ADMIN_PASSWORD
@@ -417,4 +417,4 @@ mvn test
 
 上游 MindBridge 项目的版权、许可证和归属信息未随原始交付包提供。上游代码、文档、图片、数据集和模型衍生资产仍归原作者所有；使用或再分发前请自行确认上游授权。详见 [NOTICE](NOTICE)。
 
-本项目基于开源项目 **MindBridge** 二次开发。
+本项目原名为 MindBridge，现更名为 MindMate，本项目基于 MindBridge 开源代码二次开发并进行了安全加固与功能重构。

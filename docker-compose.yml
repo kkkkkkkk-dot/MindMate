@@ -1,8 +1,10 @@
+name: mindmate
+
 services:
   app:
     build: .
-    image: mindbridge-agent:0.1.0
-    container_name: mindbridge-agent
+    image: mindmate-agent:0.1.0
+    container_name: mindmate-agent
     depends_on:
       mysql:
         condition: service_healthy
@@ -41,7 +43,7 @@ services:
 
   mysql:
     image: mysql:8.4
-    container_name: mindbridge-mysql
+    container_name: mindmate-mysql
     environment:
       MYSQL_DATABASE: mindbridge
       MYSQL_USER: ${DB_USERNAME:-mindbridge}
@@ -60,7 +62,7 @@ services:
 
   redis:
     image: redis:7.2-alpine
-    container_name: mindbridge-redis
+    container_name: mindmate-redis
     command: redis-server --appendonly yes
     ports:
       - "127.0.0.1:6379:6379"
@@ -74,7 +76,7 @@ services:
 
   chroma:
     image: chromadb/chroma:latest
-    container_name: mindbridge-chroma
+    container_name: mindmate-chroma
     ports:
       - "127.0.0.1:8000:8000"
     volumes:
@@ -82,7 +84,7 @@ services:
 
   mailpit:
     image: axllent/mailpit:latest
-    container_name: mindbridge-mailpit
+    container_name: mindmate-mailpit
     ports:
       - "127.0.0.1:1025:1025"
       - "127.0.0.1:8025:8025"

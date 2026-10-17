@@ -7,8 +7,8 @@
     <groupId>com.mindbridge</groupId>
     <artifactId>mindbridge-agent</artifactId>
     <version>0.1.0</version>
-    <name>MindBridge Agent</name>
-    <description>Campus mental-health assistant with routed RAG, SSE, risk alerting and MCP tools.</description>
+    <name>MindMate Agent</name>
+    <description>MindMate: campus mental-health assistant with routed RAG, SSE, risk alerting and MCP tools.</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
